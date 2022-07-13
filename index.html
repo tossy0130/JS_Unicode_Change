@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コード変換</title>
+
+<style>
+
+/*--- pc ---*/
+@media screen and (min-width:787px) { 
+
+    body {font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+    font-size:16.8px;}
+
+    .container {margin-bottom: 150px;}
+
+    .content {width: 1000px;margin: 0 auto;}
+
+    h1 {text-align: center;}
+
+    h2 {border-left: 8px solid #00A82D;padding: 0 0 0 15px;margin: 45px 0 20px 0;}
+
+    .text_box_01{width: 100%; padding: 10px 15px; font-size: 16px;border-radius: 3px; 
+    border: 2px solid #ddd;box-sizing: border-box;}
+
+     .text_box_02{width: 100%; padding: 10px 15px; font-size: 16px;border-radius: 3px; 
+    border: 2px solid #00A82D;box-sizing: border-box;}
+
+    .btn{border-radius: 5px;padding: 15px 80px;background-color: #00A82D;color: white;
+    margin: 35px 0 5px 0;border: none;font-size: 16px;}
+
+    .result {width: 100%;border: 1px solid #00A82D;border-radius: 3px;padding: 10px 10px;}
+
+    .line {background-color: #fff;border-top: 5px solid #bbb;margin: 50px 0;}
+
+}
+
+@media screen and (max-width:786px) { 
+
+    body {font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+    font-size:14.8px;}
+
+
+
+}
+
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="content">
+    <h1>JIM 文字コード変換ツール</h1>
+    <p>
+        <h2>unicode 変換</h2>
+        <input type="text" id="text_box_02" class="text_box_01" placeholder="変換したい文字コードを貼り付けてください。"> <input id="btn_02" class="btn" type="button" onclick="change_uni_02();" value="変換">
+    </p>
+
+    <p><input type="text" id="result_box_02" class="text_box_02"></p>
+
+    </div>
+</div>
+
+<script>
+
+function change_uni() {
+    var target = document.getElementById('text_box').value;
+    document.getElementById('result_box').innerHTML = unescape(target);
+}
+
+
+var unescapeUnicode = function(str) {
+  return str.replace(/\\u([a-fA-F0-9]{4})/g, function(m0, m1) {
+    return String.fromCharCode(parseInt(m1, 16));
+  });
+};
+
+function change_uni_02() {
+    var text_box_02 = document.getElementById('text_box_02').value;
+    var result = unescapeUnicode(text_box_02);
+    document.getElementById('result_box_02').value = result;
+}
+
+
+
+</script>
+    
+</body>
+</html>
